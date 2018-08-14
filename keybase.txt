@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/aleksbez
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://abez.xyz
+  * I am aleksbez (https://keybase.io/aleksbez) on keybase.
+  * I have a public key with fingerprint BC91 C76C 50A7 A083 C8AB  3B44 9CC9 3A84 72B9 E025
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "010158ad12f5c27d490000ccb046bc5a28c4ee34ce4d7ec40901adda3d15a205de730a",
+      "fingerprint": "bc91c76c50a7a083c8ab3b449cc93a8472b9e025",
+      "host": "keybase.io",
+      "key_id": "9cc93a8472b9e025",
+      "kid": "010158ad12f5c27d490000ccb046bc5a28c4ee34ce4d7ec40901adda3d15a205de730a",
+      "uid": "74cf89cad54f949ecdc3148d691ad819",
+      "username": "aleksbez"
+    },
+    "service": {
+      "hostname": "abez.xyz",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1534259601,
+  "expire_in": 157680000,
+  "prev": "59153ffa412411f5db6854a69c54dc9b8b7cb69b15237feda6842c480e50f7c9",
+  "seqno": 40,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.77
+Comment: https://keybase.io/crypto
+
+yMIhAnicrZJdSBRRFMd30xIlLagXa+1hKqw0nTtz73ws5UsRpUX2YaF9bPdrdNB2
+tp1xa9ekErIMKjKtFw3pJQiSCqKXMhPty8wiCrSSPinpKYggIuuO1FuP3ZfLPef3
+/99zDqc/Oy2QFcxOL13GWqdtDQ7ebqsPbIt/OdUgEYclpXCDVMsnL17HuOtFam0m
+hSUZyAAZmAHFQlTRGTRlcSglMtQIRVgxKORchZRDpnMKZVMGmDGsMiCSMmJcV2Us
+FUqWHa3m8VjcjnrCllATUF2jSMY6lg2VGpioBEKTUlPFBtQVYnJZQUJY47i+QhRH
+sMuLbEfExCMyWd4/+P9cd/2knQ6pZZgUMwQtE5qcMqoCaDDNFCoDmD7o8ngU7+aC
+xnW81iU8JTUWSiKasCn3B+t38pcQ2aJ9yZTQxeKO51CnTkRrPC/mhn2Vl4z52F5O
+In8MIsSOMjFDoUjwuGs7USkMBEk923cESIUKMjUZFEp8X8yO84jtE0jXDL9z/x+e
+EJbIFKhlYQgUCICFGNEMBLFmUgQZNYlBdEo0kwCkqLrFGdYMqFBoyBzJlk79Tl2+
+J+pIYShMPVwtPF27Ooq9+jiXGvt6t6cHglmBaVOn+MsVyMqc+XflbgQyvgfXtR/Z
+db2od9VQy90LvKMxtX7eoZN3mqTE2aa5ZS8GQzPDnUPe0fQTZwqCrSsuD7861/Uh
+0dg3oNW+bdsbWzg/v6RjzbclSw7W/Vg5uByfa16b3r/4WWYqY/70Yb6z+cGlPMd9
+XnVvY7738/5Y6cXQSHV3V/Pr7Ct51O7Z8Ca5Z/HxkZt9A+XvHoVGmtoGOqXx3p6O
+7Z3teYsKbg3OCFV8Qj8W5JS/HHWTWTucpTm5E7PGcsPjDddW3Lr6reDA5oEWqyTU
+/eth4vvh+i0lB5s3rb5jNMwBetlH5e7o5+zHxb3jT4a/zn16bKIqkuftxyVp5w1Q
+OLpzeeX74tmpiqeVpPz0b1wdOlk=
+=yBwZ
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/aleksbez
+
+==================================================================
