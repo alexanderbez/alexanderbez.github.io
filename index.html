@@ -1,113 +1,395 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="dark scroll-smooth">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <title>Aleksandr Bezobchuk | Software Engineer</title>
+    <meta name="description"
+        content="Aleksandr Bezobchuk - Staff Software Engineer specializing in distributed systems, web3, and decentralized applications.">
+    <meta name="author" content="Aleksandr Bezobchuk">
+    <meta name="keywords" content="web3, blockchain, staff software engineer, distributed systems, golang, rust">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aleksbez.xyz/">
+    <meta property="og:title" content="Aleksandr Bezobchuk | Software Engineer">
+    <meta property="og:description"
+        content="Staff Software Engineer specializing in distributed systems, web3, and decentralized applications.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://aleksbez.xyz/">
+    <meta property="twitter:title" content="Aleksandr Bezobchuk | Software Engineer">
+    <meta property="twitter:description"
+        content="Staff Software Engineer specializing in distributed systems, web3, and decentralized applications.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // UNCOMMENT AND USE YOUR VARIABLES FOR DISQUS AND GOOGLE ANALYTICS
-        // var d_id  = '',
-        //     g_id  = 'UA-XXXXXXXX-X', // Format: UA-########-#, Example: UA-11220899-1
-        //     g_url = 'XXXXXXX.XXX' // Format: #####.####, Example: webdesignporto.com
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        dark: {
+                            bg: '#272822',
+                            surface: '#3e3d32',
+                            text: '#f8f8f2',
+                            'text-secondary': '#a59f85',
+                            accent1: '#ae81ff',
+                            accent2: '#66d9ef',
+                            accent3: '#f92672',
+                        },
+                        light: {
+                            bg: '#f8f9fa',
+                            surface: '#ffffff',
+                            text: '#1a202c',
+                            'text-secondary': '#4a5568',
+                            accent1: '#8b5cf6',
+                            accent2: '#0ea5e9',
+                            accent3: '#ec4899',
+                        }
+                    }
+                }
+            }
+        }
     </script>
 
-    <title>Aleksandr Bezobchuk</title>
-    <meta name="description" content="Aleksandr Bezobchuk" />
+    <style>
+        body {
+            font-family: 'JetBrains Mono', monospace;
+        }
 
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="MobileOptimized" content="320" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        .ascii-art {
+            line-height: 1.2;
+            white-space: pre;
+            overflow-x: auto;
+        }
 
-    <link rel="stylesheet" type="text/css" href="assets/highlighter/prettify.css%3Fv=7db4a3f51f.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+        .transition-theme {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
+        /* Rectangular Sliding Toggle */
+        .theme-toggle-wrapper {
+            position: relative;
+            width: 70px;
+            height: 35px;
+            background: #3d3d3d;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: none;
+            padding: 0;
+        }
 
-    <link rel="canonical" href="index.html" />
-    <meta name="referrer" content="no-referrer-when-downgrade" />
-    
-    <meta property="og:site_name" content="Aleksandr Bezobchuk" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Aleksandr Bezobchuk" />
-    <meta property="og:description" content="Aleksandr Bezobchuk. Blockchain Software Engineer. New York City." />
-    <meta property="og:url" content="https://abez.xyz" />
-    
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        .dark .theme-toggle-wrapper {
+            background: #e8e8e8;
+        }
 
-      ga('create', g_id, g_url);
-      ga('send', 'pageview');
+        .theme-toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 29px;
+            height: 29px;
+            background: white;
+            border-radius: 4px;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    </script>
+        .dark .theme-toggle-slider {
+            transform: translateX(35px);
+            background: #1a1a1a;
+        }
+
+        .theme-toggle-icon {
+            width: 18px;
+            height: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Blinking Cursor */
+        .blinking-cursor {
+            animation: blink 1s step-end infinite;
+            display: inline-block;
+            width: 1.8em;
+            height: 7.8em;
+            background-color: currentColor;
+            vertical-align: inherit;
+            margin-left: 0.5em;
+            transform: translateY(-0.15em);
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
-<body class="home-template">
- 
-<header id="site-head" >
-    <div class="vertical animated bounceInDown">
-        <div id="site-head-content" class="inner">
 
-            <a id="blog-logo" href="index.html"><img src="content/images/me.jpg" alt="Logo" /></a>
-            <h1 class="blog-title">Aleksandr Bezobchuk</h1>
-            <h2 class="blog-description">Software Engineer. World Traveler. Music Junkie.</h2>
+<body class="bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text transition-theme">
 
-            <a href="content/resume.pdf" target="_blank" class="blog-resume"><h2 class="blog-resume">Resume</h2></a>
-            <hr class="inner">
-
-            <a href="https://github.com/alexanderbez/" target="_blank"><i class="fab fa-github social"></i></a>
-            <a href="https://twitter.com/aleksb3z/" target="_blank"><i class="fab fa-twitter social"></i></a>
-            <a href="https://www.linkedin.com/in/alexanderbezobchuk/" target="_blank"><i class="fab fa-linkedin social"></i></a>
-            <a href="https://keybase.io/aleksbez" target="_blank"><i class="fas fa-key social"></i></a>         
-            
-        </div>
+    <!-- Copy Notification -->
+    <div id="copy-notification"
+        class="fixed top-16 right-6 bg-light-accent1 dark:bg-dark-accent1 text-white px-6 py-3 rounded shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+        Copied to clipboard!
     </div>
-</header>
 
-<main class="content" role="main">
+    <!-- Theme Toggle -->
+    <div class="fixed top-6 right-6 z-50">
+        <button id="theme-toggle" class="theme-toggle-wrapper" aria-label="Toggle theme">
+            <div class="theme-toggle-slider">
+                <div class="theme-toggle-icon">
+                    <!-- Sun icon for light mode -->
+                    <svg class="dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon icon for dark mode -->
+                    <svg class="hidden dark:block" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="white"></path>
+                    </svg>
+                </div>
+            </div>
+        </button>
+    </div>
 
+    <!-- Main Content -->
+    <main class="px-6 md:px-12 py-8 md:py-12 max-w-3xl">
 
-    <article class="post tag-getting-started">
-        <header class="post-header">
-            <h2 class="post-title"><a href="index.html">Hi, I'm Aleks!</a></h2>
-           
+        <!-- Header -->
+        <header class="mb-12">
+            <div style="position: relative; display: inline-block;">
+                <pre class="ascii-art text-[8px] sm:text-xs text-light-text dark:text-dark-text font-bold leading-tight mb-4"
+                    style="margin: 0; display: inline-block;">
+ █████╗ ██╗     ███████╗██╗  ██╗███████╗
+██╔══██╗██║     ██╔════╝██║ ██╔╝██╔════╝
+███████║██║     █████╗  █████╔╝ ███████╗
+██╔══██║██║     ██╔══╝  ██╔═██╗ ╚════██║
+██║  ██║███████╗███████╗██║  ██╗███████║
+╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝
+██████╗ ███████╗███████╗ ██████╗ ██████╗  ██████╗██╗  ██╗██╗   ██╗██╗  ██╗
+██╔══██╗██╔════╝╚══███╔╝██╔═══██╗██╔══██╗██╔════╝██║  ██║██║   ██║██║ ██╔╝
+██████╔╝█████╗    ███╔╝ ██║   ██║██████╔╝██║     ███████║██║   ██║█████╔╝
+██╔══██╗██╔══╝   ███╔╝  ██║   ██║██╔══██╗██║     ██╔══██║██║   ██║██╔═██╗
+██████╔╝███████╗███████╗╚██████╔╝██████╔╝╚██████╗██║  ██║╚██████╔╝██║  ██╗
+╚═════╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝</pre><span
+                    class="blinking-cursor text-[8px] sm:text-xs"></span>
+            </div>
+            <h1 class="sr-only">Aleks Bezobchuk</h1>
+            <p class="text-base text-light-text-secondary dark:text-dark-text-secondary mb-3">Backend & Distributed
+                Systems Software
+                Engineer</p>
+            <!-- <pre
+                class="ascii-art text-xs text-light-accent1 dark:text-dark-accent1">───────────────────────────────────────────────────────────────────────────</pre> -->
         </header>
-        <section class="post-excerpt">
-            <p>
-                I've been developing software since early 2008. I received my Bachelors of
-                Science degree in Computer Science from the University of Maryland. Upon
-                graduating, I’ve had the privilege on working on a wide array of systems
-                and applications including designing and developing distributed and scalable
-                systems, scalable web services, and most recently, to which I have found a true
-                calling, blockchain and distributed ledger technology as a whole.
-                <br>
-                <br>
-                I primarily work on data structures to facilitate data management on the
-                blockchain and the performance and scalability aspects surrounding them.
-                Golang and Python are my languages of choice!
-                <br>
-                <br>
-                When I’m not developing, I enjoy taking backpacking and camping trips abroad,
-                attending music events and concerts, hiking, and rock
-                climbing - pretty much anything outdoors or that raises my adrenaline!
-            </p>
+
+        <!-- About Section -->
+        <section id="about" class="mb-8">
+            <h2 class="text-lg font-bold mb-3 text-light-accent1 dark:text-dark-accent1">▸ About</h2>
+            <div class="space-y-3 text-sm leading-relaxed">
+                <p>
+                    Senior / Staff Software Engineer with 12+ years of experience designing, building, and leading
+                    large-scale distributed systems, blockchain protocols, and production backend infrastructure.
+                    Deep expertise in P2P networking, BFT consensus, data replication, and protocol architecture.
+                    Proven track record leading core protocol development across web3 ecosystems and delivering
+                    high-performance, globally distributed systems in production.
+                </p>
+                <p>
+                    Skilled in Go and Rust, with strong foundations in computer science principles including algorithms,
+                    data structures, and systems design. Passionate about open source software, collaboration, and
+                    mentoring
+                    engineers to build reliable and scalable software.
+                </p>
+                <p>
+                    Outside of engineering, I love anything that gets my adrenaline going or just being
+                    outdoors in nature. Snowboarding, mountain biking, and camping are all big passions of mine.
+                    I'm also a black belt in Brazilian Jiu-Jitsu!
+                </p>
+            </div>
         </section>
-    </article>
 
-</nav>
+        <!-- Links Section -->
+        <section class="mb-8">
+            <h2 class="text-lg font-bold mb-3 text-light-accent1 dark:text-dark-accent1">▸ Links</h2>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                <a href="https://github.com/alexanderbez" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors">
+                    → GitHub
+                </a>
+                <a href="https://twitter.com/aleksb3z" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors">
+                    → X
+                </a>
+                <a href="https://linkedin.com/in/aleksbez" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors">
+                    → LinkedIn
+                </a>
+                <a href="assets/docs/resume.pdf" target="_blank"
+                    class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors">
+                    → Resume
+                </a>
+            </div>
+        </section>
 
-</main>
+        <!-- Projects Section -->
+        <section id="projects" class="mb-8">
+            <h2 class="text-lg font-bold mb-3 text-light-accent1 dark:text-dark-accent1">▸ Projects / Contributions</h2>
+            <div class="space-y-4">
 
-    <footer class="site-footer">
-        <div class="inner">
-             <section class="copyright">All content copyright <a href="index.html">Aleksandr Bezobchuk</a> &copy; 2018 | All rights reserved</section>
+                <div>
+                    <h3 class="text-base font-bold mb-1">
+                        <a href="https://github.com/cosmos/cosmos-sdk/pulls?q=is%3Apr+author%3Aalexanderbez+"
+                            target="_blank" rel="noopener noreferrer"
+                            class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors">
+                            › Cosmos SDK
+                        </a>
+                    </h3>
+                    <!-- <p class="text-xs text-light-text-secondary dark:text-dark-text-secondary mb-1">Go • Rust</p> -->
+                </div>
+
+                <div>
+                    <h3 class="text-base font-bold mb-1">
+                        <a href="https://github.com/tendermint/tendermint/pulls?q=is%3Apr+author%3Aalexanderbez+"
+                            target="_blank" rel="noopener noreferrer"
+                            class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors">
+                            › CometBFT
+                        </a>
+                    </h3>
+                    <!-- <p class="text-xs text-light-text-secondary dark:text-dark-text-secondary mb-1">Go</p> -->
+                </div>
+
+                <div>
+                    <h3 class="text-base font-bold mb-1">
+                        <a href="https://github.com/hashicorp/vault/pulls?q=is%3Apr+author%3Aalexanderbez+"
+                            target="_blank" rel="noopener noreferrer"
+                            class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors">
+                            › Hashicorp Vault
+                        </a>
+                    </h3>
+                    <!-- <p class="text-xs text-light-text-secondary dark:text-dark-text-secondary mb-1">Go</p> -->
+                </div>
+
+                <div>
+                    <h3 class="text-base font-bold mb-1">
+                        <a href="https://github.com/osmosis-labs/osmosis/pulls?q=is%3Apr+author%3Aalexanderbez+"
+                            target="_blank" rel="noopener noreferrer"
+                            class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors">
+                            › Osmosis
+                        </a>
+                    </h3>
+                    <!-- <p class="text-xs text-light-text-secondary dark:text-dark-text-secondary mb-1">Go</p> -->
+                </div>
+
+                <div>
+                    <h3 class="text-base font-bold mb-1">
+                        <a href="https://github.com/sei-protocol/sei-chain/pulls?q=is%3Apr+author%3Aalexanderbez+"
+                            target="_blank" rel="noopener noreferrer"
+                            class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors">
+                            › Sei
+                        </a>
+                    </h3>
+                    <!-- <p class="text-xs text-light-text-secondary dark:text-dark-text-secondary mb-1">Go</p> -->
+                </div>
+
+                <div>
+                    <h3 class="text-base font-bold mb-1">
+                        <a href="https://github.com/umee-network/umee/pulls?q=is%3Apr+author%3Aalexanderbez+"
+                            target="_blank" rel="noopener noreferrer"
+                            class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors">
+                            › Umee
+                        </a>
+                    </h3>
+                    <!-- <p class="text-xs text-light-text-secondary dark:text-dark-text-secondary mb-1">Go</p> -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="mb-8">
+            <h2 class="text-lg font-bold mb-3 text-light-accent1 dark:text-dark-accent1">▸ Publications</h2>
+            <div class="space-y-3">
+                <div>
+                    <h3 class="text-base font-bold mb-1">
+                        <a href="https://arxiv.org/abs/2508.04833" target="_blank" rel="noopener noreferrer"
+                            class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors">
+                            › OPTIMUMP2P: Fast and Reliable Gossiping in P2P Networks
+                        </a>
+                    </h3>
+                    <p class="text-xs text-light-text-secondary dark:text-dark-text-secondary">International Conference
+                        on Network and Service Management (CNSM) • 2025</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-8">
+            <h2 class="text-lg font-bold mb-3 text-light-accent1 dark:text-dark-accent1">▸ Contact</h2>
+            <div class="text-sm">
+                <p class="mb-3">
+                    <button id="copy-email" data-email="aleks@example.com"
+                        class="hover:text-light-accent2 dark:hover:text-dark-accent2 transition-colors cursor-pointer"
+                        title="Click to copy">
+                        → aleks.bezobchuk@proton.me
+                    </button>
+                    <span class="text-xs text-light-text-secondary dark:text-dark-text-secondary ml-2">(click to
+                        copy)</span>
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="px-6 md:px-12 py-6 border-t border-light-accent1 dark:border-dark-accent1 max-w-3xl">
+        <div class="text-xs text-light-text-secondary dark:text-dark-text-secondary">
+            <p>© 2026 Aleksandr Bezobchuk</p>
         </div>
     </footer>
 
-    <!-- You can safely delete this line if your theme does not require jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
 
-    <script type='text/javascript' src='assets/highlighter/prettify.js'></script>
-    <script type='text/javascript' src='assets/js/shell.js'></script>
 </body>
+
 </html>
