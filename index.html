@@ -136,11 +136,20 @@
             animation: blink 1s step-end infinite;
             display: inline-block;
             width: 1.8em;
-            height: 7.8em;
+            height: 7.6em;
             background-color: currentColor;
             vertical-align: inherit;
-            margin-left: 0.5em;
-            transform: translateY(-0.15em);
+            margin-left: 0.3em;
+            transform: translateY(-0.1em);
+        }
+
+        @media (min-width: 640px) {
+            .blinking-cursor {
+                width: 1.8em;
+                height: 7.8em;
+                margin-left: 0.5em;
+                transform: translateY(-0.15em);
+            }
         }
 
         @keyframes blink {
@@ -157,16 +166,16 @@
     </style>
 </head>
 
-<body class="bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text transition-theme">
+<body class="bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text transition-theme relative">
 
     <!-- Copy Notification -->
     <div id="copy-notification"
-        class="fixed top-16 right-6 bg-light-accent1 dark:bg-dark-accent1 text-white px-6 py-3 rounded shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+        class="absolute top-16 right-6 bg-light-accent1 dark:bg-dark-accent1 text-white px-6 py-3 rounded shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50">
         Copied to clipboard!
     </div>
 
     <!-- Theme Toggle -->
-    <div class="fixed top-6 right-6 z-50">
+    <div class="absolute top-6 right-6 z-50">
         <button id="theme-toggle" class="theme-toggle-wrapper" aria-label="Toggle theme">
             <div class="theme-toggle-slider">
                 <div class="theme-toggle-icon">
@@ -196,9 +205,9 @@
     <main class="px-6 md:px-12 py-8 md:py-12 max-w-3xl">
 
         <!-- Header -->
-        <header class="mb-12">
+        <header class="mb-10">
             <div style="position: relative; display: inline-block;">
-                <pre class="ascii-art text-[8px] sm:text-xs text-light-text dark:text-dark-text font-bold leading-tight mb-4"
+                <pre class="ascii-art text-[6px] sm:text-xs text-light-text dark:text-dark-text font-bold leading-tight mb-4"
                     style="margin: 0; display: inline-block;">
  █████╗ ██╗     ███████╗██╗  ██╗███████╗
 ██╔══██╗██║     ██╔════╝██║ ██╔╝██╔════╝
@@ -212,7 +221,7 @@
 ██╔══██╗██╔══╝   ███╔╝  ██║   ██║██╔══██╗██║     ██╔══██║██║   ██║██╔═██╗
 ██████╔╝███████╗███████╗╚██████╔╝██████╔╝╚██████╗██║  ██║╚██████╔╝██║  ██╗
 ╚═════╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝</pre><span
-                    class="blinking-cursor text-[8px] sm:text-xs"></span>
+                    class="blinking-cursor text-[6px] sm:text-xs"></span>
             </div>
             <h1 class="sr-only">Aleks Bezobchuk</h1>
             <p class="text-base text-light-text-secondary dark:text-dark-text-secondary mb-3">Backend & Distributed
